@@ -43,12 +43,12 @@ $data='{
 				}]
 		  },
 		  {
-			   "name":"宣城本地",
+			   "name":"本地",
 			   "sub_button":[
 				{
-				   "type":"view",
-				   "name":"自定义页面A",
-				   "url":"http://zqz2000.applinzi.com/view/index.html"
+				   "type":"click",
+				   "name":"武汉天气",
+				   "key":"tianqi"
 				}]
 		   },
 		   {
