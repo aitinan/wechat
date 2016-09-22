@@ -90,28 +90,43 @@ class wechatCallbackapiTest
                     $url = "http://op.juhe.cn/onebox/weather/query?cityname=%E6%AD%A6%E6%B1%89&key=87ffc29722810c9dcaa06d6f5a8a7700";
                     $output = $this->httpRequest($url);
                     $weather = json_decode($output, true);
-                        
-                        $data = $weather['result']['data']['weather'][1]['info'];
+                    	
+                    	$data = $weather['result']['data']['weather'][1]['info'];
                         $contentStr = "【武汉天气】"."\n".
-                                      " 早晨：".$data['dawn'][1]."  温度：".$data['dawn'][2]."\n".
-                                      " 白天：".$data['day'][1]."  温度：".$data['day'][2]."\n".
-                                      " 晚上：".$data['night'][1]."  温度：".$data['night'][2];
+                            		  " 早晨：".$data['dawn'][1]."  温度：".$data['dawn'][2]."\n".
+                    				  " 白天：".$data['day'][1]."  温度：".$data['day'][2]."\n".
+                            		  " 晚上：".$data['night'][1]."  温度：".$data['night'][2];
+                    	$resultStr = $this->responseText($object, $contentStr);
                         break;
+                    
+                    case "wenZhang":
+                    
+                    $url = "http://v.juhe.cn/weixin/query?key=24df3572d1f118573fafee09cd5a0949";
+                    $output = $this->httpRequest($url);
+                    $news = json_decode($output, true);
+                    	
+                   
+                    	$resultStr = $this->responseImg($object, $news['result']['list']);
+                    	
+                    	break;
+                    
                     default:
                         $contentStr = "点击事件";
+                        $resultStr = $this->responseText($object, $contentStr);
                         break;
                 }
                 break;
             
             default :
                 $contentStr = "感谢您关注【zhaoqize】";
+                $resultStr = $this->responseText($object, $contentStr);
                 break;
         }
-        $resultStr = $this->responseText($object, $contentStr);
+        
         return $resultStr;
     }
     
-    //响应文本处理
+    //响应文本(text)消息处理
     public function responseText($object, $content, $flag=0)
     {
         $textTpl = "<xml>
@@ -123,6 +138,38 @@ class wechatCallbackapiTest
                     <FuncFlag>%d</FuncFlag>
                     </xml>";
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
+        return $resultStr;
+    }
+    
+    //响应图文(news)消息处理
+    public function responseImg($object, $news, $flag=0)
+    {
+        //简单的推送五章 
+        //$news[$x]['source'] $news[$x]['title'] $news[$x]['firstImg'] $news[$x]['url']
+        
+        	$newsTpl = "<xml>
+                        <ToUserName><![CDATA[$object->FromUserName]]></ToUserName>
+                        <FromUserName><![CDATA[$object->ToUserName]]></FromUserName>
+                        <CreateTime>12345678</CreateTime>
+                        <MsgType><![CDATA[news]]></MsgType>                      
+                        <ArticleCount>5</ArticleCount>
+                        <Articles>";
+        
+            for($x=0; $x<5; $x++){               
+                $newsTpl .=	"<item>
+                            <Title><![CDATA[".$news[$x]['title']."]]></Title> 
+                            <Description><![CDATA[".$news[$x]['title']."]]></Description>
+                            <PicUrl><![CDATA[".$news[$x]['firstImg']."]]></PicUrl>
+                            <Url><![CDATA[".$news[$x]['url']."]]></Url>
+                            </item>";
+                            
+            }
+        
+        	$newsTpl .= "</Articles></xml>";
+       		
+                                        
+        $resultStr = sprintf($newsTpl);
+        
         return $resultStr;
     }
     

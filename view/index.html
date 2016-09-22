@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WEUI</title>
-    <meta charset="utf-8">
+<meta charset="utf-8">
+	<title>公交查询</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-	<link rel="stylesheet" type="text/css" href="../static/weui.min.css">
-    
+	<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.2/weui.css">
 </head>
 <body>
 
-<a href="#" class="weui_btn weui_btn_primary">按钮</a> 
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_primary">按钮</a> 
-<a href="#" class="weui_btn weui_btn_warn">确认</a> 
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_warn">确认</a>
-<a href="#" class="weui_btn weui_btn_default">按钮</a>
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_default">按钮</a> 
-<div class="button_sp_area">
-<a href="#" class="weui_btn weui_btn_plain_default">按钮</a>     
-<a href="#" class="weui_btn weui_btn_plain_primary">按钮</a>     
-<a href="#" class="weui_btn weui_btn_mini weui_btn_primary">按钮</a>     
-<a href="#" class="weui_btn weui_btn_mini weui_btn_default">按钮</a> </div> 
+<div class="weui_cells_title">全国公交查询</div>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <label class="weui_label">城市名称</label>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="text"  placeholder="请输入城市名称">
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <div class="weui_label">车辆编号</div>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="text"  placeholder="请输入车辆编号">
+        </div>
+    </div>
     
-    <a href="#" class="weui_btn weui_btn_primary">按钮</a> 
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_primary">按钮</a> 
-<a href="#" class="weui_btn weui_btn_warn">确认</a> 
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_warn">确认</a>
-<a href="#" class="weui_btn weui_btn_default">按钮</a>
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_default">按钮</a> 
-<div class="button_sp_area">
-<a href="#" class="weui_btn weui_btn_plain_default">按钮</a>     
-<a href="#" class="weui_btn weui_btn_plain_primary">按钮</a>     
-<a href="#" class="weui_btn weui_btn_mini weui_btn_primary">按钮</a>     
-<a href="#" class="weui_btn weui_btn_mini weui_btn_default">按钮</a> </div> 
-    
-    <a href="#" class="weui_btn weui_btn_primary">按钮</a> 
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_primary">按钮</a> 
-<a href="#" class="weui_btn weui_btn_warn">确认</a> 
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_warn">确认</a>
-<a href="#" class="weui_btn weui_btn_default">按钮</a>
-<a href="#" class="weui_btn weui_btn_disabled weui_btn_default">按钮</a> 
-<div class="button_sp_area">
-<a href="#" class="weui_btn weui_btn_plain_default">按钮</a>     
-<a href="#" class="weui_btn weui_btn_plain_primary">按钮</a>     
-<a href="#" class="weui_btn weui_btn_mini weui_btn_primary">按钮</a>     
-<a href="#" class="weui_btn weui_btn_mini weui_btn_default">按钮</a> </div> 
+</div>
+
+<div class="weui_btn_area">
+    <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">确定</a>
+</div>
 
 
 </body>

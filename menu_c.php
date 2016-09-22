@@ -27,9 +27,9 @@ $data='{
 				   "key":"tianQi"
 				},
 				{
-				   "type":"click",
-				   "name":"公交查询",
-				   "key":"gongJiao"
+                   "type":"view",
+                    "name":"公交查询",
+				    "url":"http://zqz2000.applinzi.com/view/index.html"
 				},
 				{
 				   "type":"click",
@@ -40,15 +40,19 @@ $data='{
 				   "type":"click",
 				   "name":"快递查询",
 				   "key":"kuaiDi"
-				}]
+				},{
+                   "type":"click",
+				   "name":"微信精选",
+				   "key":"wenZhang"
+                }]
 		  },
 		  {
 			   "name":"本地",
 			   "sub_button":[
 				{
-				   "type":"click",
-				   "name":"武汉天气",
-				   "key":"tianqi"
+				   "type":"view",
+                    "name":"公交查询",
+				    "url":"http://zqz2000.applinzi.com/view/index.html"
 				}]
 		   },
 		   {
@@ -70,21 +74,21 @@ $data='{
 		   }]
        }';
 
-$MENU_URL="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$ACC_TOKEN;
-
-$ch = curl_init($MENU_URL);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data)));
-$info = curl_exec($ch);
-$menu = json_decode($info);
-print_r($info);		//创建成功返回：{"errcode":0,"errmsg":"ok"}
-
-if($menu->errcode == "0"){
-	echo "菜单创建成功";
-}else{
-	echo "菜单创建失败";
-}
+    $MENU_URL="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$ACC_TOKEN;
+    
+    $ch = curl_init($MENU_URL);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data)));
+    $info = curl_exec($ch);
+    $menu = json_decode($info);
+    print_r($info);		//创建成功返回：{"errcode":0,"errmsg":"ok"}
+    
+    if($menu->errcode == "0"){
+        echo "菜单创建成功";
+    }else{
+        echo "菜单创建失败";
+    }
 
 ?>
